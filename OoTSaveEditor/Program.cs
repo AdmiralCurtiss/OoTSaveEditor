@@ -6,6 +6,7 @@ using System.Windows.Forms;
 
 namespace HyoutaTools.Other.N64.OoTSaveEditor {
 	class Program {
+		[STAThread]
 		public static int Main( string[] args ) {
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault( false );
