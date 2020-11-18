@@ -2550,7 +2550,8 @@ namespace HyoutaTools.Other.N64.OoTSaveEditor {
 		public uint IdentifierZELD; // 0x001C
 		public ushort IdentifierAZ; // 0x0020, combined with previous, must be "ZELDAZ" if file exists
 		public ushort DeathCounter; // 0x0022
-		public string PlayerName; // 0x0024, 8 bytes, padded with 0xDF
+		public uint PlayerNamePart1; // 0x0024, 8 bytes, padded with 0xDF
+		public uint PlayerNamePart2;
 		public ushort DiskDriveSaveFlag; // 0x0030, unknown if location/size matches, 0 = no, 1 = yes
 		public ushort MaxHealth; // 0x0032, in 16th of a heart
 		public ushort Health; // 0x0032, in 16th of a heart
@@ -2584,7 +2585,8 @@ namespace HyoutaTools.Other.N64.OoTSaveEditor {
 			IdentifierZELD = Util.SwapEndian( BitConverter.ToUInt32( File, Offset + 0x1C ) );
 			IdentifierAZ = Util.SwapEndian( BitConverter.ToUInt16( File, Offset + 0x20 ) );
 			DeathCounter = Util.SwapEndian( BitConverter.ToUInt16( File, Offset + 0x22 ) );
-			PlayerName = Encoding.ASCII.GetString( File, Offset + 0x24, 8 );
+			PlayerNamePart1 = Util.SwapEndian(BitConverter.ToUInt32(File, Offset + 0x24));
+			PlayerNamePart2 = Util.SwapEndian(BitConverter.ToUInt32(File, Offset + 0x28));
 			DiskDriveSaveFlag = Util.SwapEndian( BitConverter.ToUInt16( File, Offset + 0x2C ) );
 			MaxHealth = Util.SwapEndian( BitConverter.ToUInt16( File, Offset + 0x2E ) );
 			Health = Util.SwapEndian( BitConverter.ToUInt16( File, Offset + 0x30 ) );
@@ -2635,6 +2637,8 @@ namespace HyoutaTools.Other.N64.OoTSaveEditor {
 			BitConverter.GetBytes( Util.SwapEndian( EntranceIndex ) ).CopyTo( File, Offset + 0x1378 );
 			BitConverter.GetBytes( Util.SwapEndian( Age ) ).CopyTo( File, Offset + 0x04 );
 			BitConverter.GetBytes( Util.SwapEndian( DeathCounter ) ).CopyTo( File, Offset + 0x22 );
+			BitConverter.GetBytes(Util.SwapEndian(PlayerNamePart1)).CopyTo(File, Offset + 0x24);
+			BitConverter.GetBytes(Util.SwapEndian(PlayerNamePart2)).CopyTo(File, Offset + 0x28);
 			BitConverter.GetBytes( Util.SwapEndian( DiskDriveSaveFlag ) ).CopyTo( File, Offset + 0x2C );
 			BitConverter.GetBytes( Util.SwapEndian( MaxHealth ) ).CopyTo( File, Offset + 0x2E );
 			BitConverter.GetBytes( Util.SwapEndian( Health ) ).CopyTo( File, Offset + 0x30 );

@@ -128,7 +128,7 @@ namespace HyoutaTools.Other.N64.OoTSaveEditor {
 		}
 
 		private void DisplaySave( int ID ) {
-			NameTextBox.Text = this.SaveFile.Saves[ID].PlayerName;
+			NameTextBox.Text = OoTNameConverter.StringFromInternal(this.SaveFile.Saves[ID].PlayerNamePart1, this.SaveFile.Saves[ID].PlayerNamePart2);
 			ChildLinkCheckbox.Checked = this.SaveFile.Saves[ID].Age != 0;
 			SixtyFourDiskDriveCheckBox.Checked = this.SaveFile.Saves[ID].DiskDriveSaveFlag != 0;
 			DeathsNumericUpDown.Value = this.SaveFile.Saves[ID].DeathCounter;
@@ -246,6 +246,22 @@ namespace HyoutaTools.Other.N64.OoTSaveEditor {
 		private void ZTargettingHoldCheckbox_CheckedChanged( object sender, EventArgs e ) {
 		}
 		private void NameTextBox_TextChanged( object sender, EventArgs e ) {
+			int id = (int)SelectedSaveNumUpDown.Value;
+			if (SaveFile != null && id >= 0 && id < SaveFile.Saves.Length) {
+				string textboxName = NameTextBox.Text;
+				string internalName = OoTNameConverter.StringFromInternal(SaveFile.Saves[id].PlayerNamePart1, SaveFile.Saves[id].PlayerNamePart2);
+				if (textboxName != internalName) {
+					try {
+						var n = OoTNameConverter.StringToInternal(textboxName);
+						SaveFile.Saves[id].PlayerNamePart1 = n.p1;
+						SaveFile.Saves[id].PlayerNamePart2 = n.p2;
+					} catch (Exception ex) {
+						NameTextBox.BackColor = Color.LightPink;
+						return;
+					}
+				}
+			}
+			NameTextBox.BackColor = Color.White;
 		}
 		private void ChildLinkCheckbox_CheckedChanged( object sender, EventArgs e ) {
 		}
