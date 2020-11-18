@@ -155,12 +155,12 @@ namespace HyoutaTools.Other.N64.OoTSaveEditor {
 				SecondaryEquipmentCheckboxes[i].Checked = ( ( SaveFile.Saves[ID].SecondaryEquipment >> i ) & 0x01 ) == 0x01;
 			}
 			Room.SelectedItem = (Rooms)SaveFile.Saves[ID].EntranceIndex;
+			RoomNumericUpDown.Value = SaveFile.Saves[ID].Room;
 		}
 		private void WriteSelectedSave() {
 			WriteSave( (int)SelectedSaveNumUpDown.Value );
 		}
 		private void WriteSave( int ID ) {
-			//NameTextBox.Text = this.SaveFile.Saves[ID].PlayerName;
 			this.SaveFile.Saves[ID].Age = ChildLinkCheckbox.Checked ? True : False;
 			this.SaveFile.Saves[ID].DiskDriveSaveFlag = SixtyFourDiskDriveCheckBox.Checked ? True : False;
 			this.SaveFile.Saves[ID].DeathCounter = (ushort)DeathsNumericUpDown.Value;
@@ -202,7 +202,8 @@ namespace HyoutaTools.Other.N64.OoTSaveEditor {
 			string rmstr = Room.SelectedValue.ToString();
 			Rooms rm = (Rooms)Enum.Parse( typeof( Rooms ), rmstr );
 			this.SaveFile.Saves[ID].EntranceIndex = (ushort)rm;
-			SaveFile.Saves[ID].Room = Byte.Parse( rmstr.Substring( rmstr.IndexOf( "Room" ) + 4, 2 ), System.Globalization.NumberStyles.AllowHexSpecifier );
+
+			SaveFile.Saves[ID].Room = (byte)RoomNumericUpDown.Value;
 		}
 
 		private void buttonOpen_Click( object sender, EventArgs e ) {

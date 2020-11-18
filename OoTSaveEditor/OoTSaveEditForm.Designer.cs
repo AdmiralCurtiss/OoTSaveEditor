@@ -30,6 +30,7 @@
 			this.SelectedSaveNumUpDown = new System.Windows.Forms.NumericUpDown();
 			this.label2 = new System.Windows.Forms.Label();
 			this.panel1 = new System.Windows.Forms.Panel();
+			this.label8 = new System.Windows.Forms.Label();
 			this.label7 = new System.Windows.Forms.Label();
 			this.MaxHealthNumericUpDown = new System.Windows.Forms.NumericUpDown();
 			this.label6 = new System.Windows.Forms.Label();
@@ -43,13 +44,15 @@
 			this.label3 = new System.Windows.Forms.Label();
 			this.buttonSave = new System.Windows.Forms.Button();
 			this.buttonOpen = new System.Windows.Forms.Button();
-			this.label8 = new System.Windows.Forms.Label();
+			this.RoomNumericUpDown = new System.Windows.Forms.NumericUpDown();
+			this.label9 = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.SelectedSaveNumUpDown)).BeginInit();
 			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.MaxHealthNumericUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.RupeesNumericUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.HealthNumericUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.DeathsNumericUpDown)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.RoomNumericUpDown)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// ZTargettingHoldCheckbox
@@ -124,6 +127,8 @@
 			this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.panel1.Controls.Add(this.label9);
+			this.panel1.Controls.Add(this.RoomNumericUpDown);
 			this.panel1.Controls.Add(this.label8);
 			this.panel1.Controls.Add(this.label7);
 			this.panel1.Controls.Add(this.MaxHealthNumericUpDown);
@@ -141,6 +146,15 @@
 			this.panel1.Name = "panel1";
 			this.panel1.Size = new System.Drawing.Size(735, 672);
 			this.panel1.TabIndex = 6;
+			// 
+			// label8
+			// 
+			this.label8.AutoSize = true;
+			this.label8.Location = new System.Drawing.Point(435, 33);
+			this.label8.Name = "label8";
+			this.label8.Size = new System.Drawing.Size(48, 13);
+			this.label8.TabIndex = 14;
+			this.label8.Text = "B Button";
 			// 
 			// label7
 			// 
@@ -283,14 +297,26 @@
 			this.buttonOpen.UseVisualStyleBackColor = true;
 			this.buttonOpen.Click += new System.EventHandler(this.buttonOpen_Click);
 			// 
-			// label8
+			// numericUpDown1
 			// 
-			this.label8.AutoSize = true;
-			this.label8.Location = new System.Drawing.Point(435, 33);
-			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(48, 13);
-			this.label8.TabIndex = 14;
-			this.label8.Text = "B Button";
+			this.RoomNumericUpDown.Location = new System.Drawing.Point(674, 31);
+			this.RoomNumericUpDown.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+			this.RoomNumericUpDown.Name = "numericUpDown1";
+			this.RoomNumericUpDown.Size = new System.Drawing.Size(58, 20);
+			this.RoomNumericUpDown.TabIndex = 15;
+			// 
+			// label9
+			// 
+			this.label9.AutoSize = true;
+			this.label9.Location = new System.Drawing.Point(633, 33);
+			this.label9.Name = "label9";
+			this.label9.Size = new System.Drawing.Size(35, 13);
+			this.label9.TabIndex = 16;
+			this.label9.Text = "Room";
 			// 
 			// OoTSaveEditForm
 			// 
@@ -314,6 +340,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.RupeesNumericUpDown)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.HealthNumericUpDown)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.DeathsNumericUpDown)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.RoomNumericUpDown)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -342,5 +369,7 @@
 		private System.Windows.Forms.Label label7;
 		private System.Windows.Forms.NumericUpDown MaxHealthNumericUpDown;
 		private System.Windows.Forms.Label label8;
+		private System.Windows.Forms.Label label9;
+		private System.Windows.Forms.NumericUpDown RoomNumericUpDown;
 	}
 }
