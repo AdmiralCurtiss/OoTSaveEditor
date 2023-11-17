@@ -40,7 +40,7 @@ namespace HyoutaTools.Other.N64.OoTSaveEditor {
 				if (InternalToChar.TryGetValue(b, out v)) {
 					sb.Append(v);
 				} else {
-					sb.AppendFormat("\\{x2}", b);
+					sb.AppendFormat("\\{0:x2}", b);
 				}
 			}
 
